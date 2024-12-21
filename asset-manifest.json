@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/komplimente-app/static/css/main.55a2a6e7.css",
-    "main.js": "/komplimente-app/static/js/main.eac4cd3f.js",
+    "main.js": "/komplimente-app/static/js/main.ee4c710f.js",
     "index.html": "/komplimente-app/index.html",
     "main.55a2a6e7.css.map": "/komplimente-app/static/css/main.55a2a6e7.css.map",
-    "main.eac4cd3f.js.map": "/komplimente-app/static/js/main.eac4cd3f.js.map"
+    "main.ee4c710f.js.map": "/komplimente-app/static/js/main.ee4c710f.js.map"
   },
   "entrypoints": [
     "static/css/main.55a2a6e7.css",
-    "static/js/main.eac4cd3f.js"
+    "static/js/main.ee4c710f.js"
   ]
 }
