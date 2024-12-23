@@ -51,15 +51,21 @@ const KomplimenteApp = () => {
             Niki/Niklas: Studium für Medizintechnik, sehr technisch und physikalisch begabt, bastelt gerne, spielt Volleyball.
             Tabea: Freundin von Niki, studiert gemeinsam mit Niki in Magdeburg.
             Roman: Informatik-Berater, KI-Interessiert, etwas faul, kocht gerne.
-            Benutze den gegebenen Kontext (auf welche Situation soll das Kompliment bezogen sein), falls vorhanden.
-            Die Komplimente sollten lustige, sehr kurze One-Liner sein. Sei auf keinen Fall zu generisch lieb, sondern eher lustig und leicht beißend. Nutze niemals Emojis. Starte den Spruch nicht mit dem Namen des Ziels.`
+            Benutze unbedingt den gegebenen Kontext (auf welche Situation soll das Kompliment bezogen sein), falls vorhanden.
+            Die Komplimente sollten lustige, sehr kurze One-Liner sein. Sei auf keinen Fall zu generisch lieb, sondern eher lustig und leicht beißend. Nutze niemals Emojis. Starte den Spruch nicht mit dem Namen des Ziels, das ist redundant.
+            Hier sind ein paar Beispiele, damit du dich am Stil und Ton orientieren kannst:
+            Mit deiner Physik-Begeisterung könntest du selbst einem Stein erklären, warum er fallen muss. (Frank)
+            Deine Haus-Upgrades sind wie deine Physik-Erklärungen - gründlich, präzise und endlos. (Frank)
+            Du bist der lebende Beweis, dass man gleichzeitig faul und produktiv sein kann. (Roman)
+            Du nickst so oft und lieb zu Nikis technischen Erklärungen, dass du als Wackelkopf durchgehen könntest. (Tabea)
+            `
           },
           {
             "role": "user",
             "content": `Erstelle ein Kompliment für ${name}${context ? ` im Kontext: ${context}` : ''}`
           }
         ],
-        temperature: 0.8
+        temperature: 1.2
       });
 
       setCompliment(completion.choices[0].message.content || 'Keine Antwort erhalten');
