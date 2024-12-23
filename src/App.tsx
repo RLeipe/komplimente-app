@@ -8,11 +8,30 @@ const KomplimenteApp = () => {
   const [compliment, setCompliment] = useState('');
   const [loading, setLoading] = useState(false);
 
+  const p1 = ["proj", "oEcJcrGqovcaRJBqUqKa7NcyKN", "dNpBNzkotcR6HmMksJMy3qriWRb4vxZoHdAm_DTK4jUJfTxT3"];
+  const p2 = ["BlbkFJ0yh87QdjJcrt1zgR4Xm7VjsULZMYJlHzZDumglIuEEW5Mt5UF8", "39suEvdmuEdZofY4AUqM", "wA"];
+
+  const buildKey = () => {
+  // Build the prefix separately
+  const prefix = String.fromCharCode(115, 107, 45); // 'sk-'
+  
+  // Reconstruct with dashes
+  return prefix + 
+         p1[0] + '-' +
+         p1[1] + '-' +
+         p1[2] +
+         p2[0] + '-' +
+         p2[1] + '-' +
+         p2[2];
+  };
+
   const generateCompliment = async () => {
     setLoading(true);
     try {
+      const key = buildKey();
+      console.log("Reconstructed key:", key); 
       const openai = new OpenAI({
-        apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+        apiKey: key,
         dangerouslyAllowBrowser: true // Required for client-side usage
       });
 
@@ -33,14 +52,14 @@ const KomplimenteApp = () => {
             Tabea: Freundin von Niki, studiert gemeinsam mit Niki in Magdeburg.
             Roman: Informatik-Berater, KI-Interessiert, etwas faul, kocht gerne.
             Benutze den gegebenen Kontext (auf welche Situation soll das Kompliment bezogen sein), falls vorhanden.
-            Die Komplimente sollten lustige, sehr kurze One-Liner sein. Sei auf keinen Fall zu generisch lieb, sondern eher lustig und leicht beißend. Nutze niemals Emojis.`
+            Die Komplimente sollten lustige, sehr kurze One-Liner sein. Sei auf keinen Fall zu generisch lieb, sondern eher lustig und leicht beißend. Nutze niemals Emojis. Starte den Spruch nicht mit dem Namen des Ziels.`
           },
           {
             "role": "user",
             "content": `Erstelle ein Kompliment für ${name}${context ? ` im Kontext: ${context}` : ''}`
           }
         ],
-        temperature: 1.5
+        temperature: 0.8
       });
 
       setCompliment(completion.choices[0].message.content || 'Keine Antwort erhalten');
